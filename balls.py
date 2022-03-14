@@ -23,7 +23,7 @@ class Ball:
         self.velocity = velocity
         self.angle = 3.76
         self.pos_x = self.radius * (cos(self.angle)) + ORIGIN_X
-        self.pos_y = (1.5 * self.radius) * (sin(self.angle)) + ORIGIN_Y
+        self.pos_y = (2 * self.radius) * (sin(self.angle)) + ORIGIN_Y
     def __del__(self):
         pass
     def move(self):
@@ -38,11 +38,12 @@ class Ball:
         '''Checks for collision'''
         if self.pos_y - ORIGIN_Y >= (-abs(self.pos_x - ORIGIN_X)) - 10:
             self.velocity *= -1
-BALLS = [Ball((i*10) + 200, (.029) * (5/8)) for i in range(16)]
+BALLS = [Ball((150-(i*10)) + 200, (29/(1000 + (i * 24)))/100) for i in range(15,-1,-1)]
+print(.029 * (6/8))
 EXIT = False
 TICKER = 0
 while not EXIT:
-    clock.tick(60)
+    #clock.tick(60)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             EXIT = True
